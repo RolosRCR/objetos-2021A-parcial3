@@ -28,7 +28,7 @@ public class SchoolTest {
     }
 
     @Test
-    public void givenGroupWithCapacity3With3Students_whenGetAvailability_thenReturnZero() {
+    public void givenGroupWithCapacity3With3Students_whenGetAvailability_thenReturnZero() throws GroupIsFullException{
         // Given:
         Group group = new Group(3);
 
@@ -61,7 +61,7 @@ public class SchoolTest {
     }
 
     @Test
-    public void givenGroupWithCapacity3With3Students_whenAddAFourthStudent_thenGroupIsFullException() {
+    public void givenGroupWithCapacity3With3Students_whenAddAFourthStudent_thenGroupIsFullException() throws GroupIsFullException {
         // Given:
         Group group = new Group(3);
 
@@ -74,7 +74,7 @@ public class SchoolTest {
     }
 
     @Test
-    public void givenScoresPerPartial_whenAverageIsRequested_thenAverageIsCorrect() throws InvalidPartialException {
+    public void givenScoresPerPartial_whenAverageIsRequested_thenAverageIsCorrect() throws InvalidPartialException,MissingScoreException {
         // Given:
         Student lucia = new Student("Lucia López", 413231);
 
@@ -90,7 +90,7 @@ public class SchoolTest {
     }
 
     @Test
-    public void givenScoresPerPartial_whenTryToSetAnInvalidPartial_thenInvalidPartialExceptionIsThrown() {
+    public void givenScoresPerPartial_whenTryToSetAnInvalidPartial_thenInvalidPartialExceptionIsThrown() throws InvalidPartialException{
         // Given:
         Student lucia = new Student("Lucia López", 413231);
 
@@ -99,7 +99,7 @@ public class SchoolTest {
     }
 
     @Test
-    public void givenScoresPerPartialWithMissingPartials_whenGetAverage_thenMissingScoreExceptionIsThrown() throws InvalidPartialException {
+    public void givenScoresPerPartialWithMissingPartials_whenGetAverage_thenMissingScoreExceptionIsThrown() throws InvalidPartialException, MissingScoreException {
         // Given:
         Student lucia = new Student("Lucia López", 413231);
 
@@ -114,7 +114,7 @@ public class SchoolTest {
     }
 
     @Test
-    public void whenGetGroupAverage_thenAverageIsReturned() {
+    public void whenGetGroupAverage_thenAverageIsReturned() throws GroupIsFullException, MissingScoreException{
         // Given:
         Student lucia = Mockito.mock(Student.class);
         Student mario = Mockito.mock(Student.class);
