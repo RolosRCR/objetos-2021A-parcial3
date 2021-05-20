@@ -1,18 +1,17 @@
 package uaslp.objetos.exams;
 
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Group {
     private List<Student> students;
     private int capacity;
     private int availability;
-    private double average;
-
 
     public Group(int cap) {
         capacity=cap;
         availability=cap;
+        students=new ArrayList<>(cap);
     }
 
     public List<Student> getStudents()
@@ -22,13 +21,10 @@ public class Group {
     public int getCapacity(){
         return capacity;
     }
-    public int setCapacity(){
-        return capacity;
-    }
     public int getAvailability(){
         return availability;
     }
-    public void addStudent(Student newStudent) throws GroupIsFullException{
+    public void addStudent(Student newStudent){
         if(availability>0)
         {students.add(newStudent);
         availability--;}
@@ -37,12 +33,14 @@ public class Group {
         }
     }
 
-    public double getAverage() throws  MissingScoreException{
-        double suma = 0;
-        for(Student currentStudent:students){
-            suma+=currentStudent.getAverage();
+    public double getAverage(){
+        Student student;
+        double average=0;
+        for(int i=0;i<students.size();i++){
+            student=students.get(i);
+            average+=student.getAverage();
         }
-        average=suma/(getCapacity()-getAvailability());
+        average=average/(students.size());
         return average;
     }
 }

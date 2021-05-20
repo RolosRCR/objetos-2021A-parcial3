@@ -61,7 +61,7 @@ public class SchoolTest {
     }
 
     @Test
-    public void givenGroupWithCapacity3With3Students_whenAddAFourthStudent_thenGroupIsFullException() throws GroupIsFullException {
+    public void givenGroupWithCapacity3With3Students_whenAddAFourthStudent_thenGroupIsFullException() {
         // Given:
         Group group = new Group(3);
 
@@ -114,7 +114,7 @@ public class SchoolTest {
     }
 
     @Test
-    public void whenGetGroupAverage_thenAverageIsReturned() throws GroupIsFullException, MissingScoreException{
+    public void whenGetGroupAverage_thenAverageIsReturned(){
         // Given:
         Student lucia = Mockito.mock(Student.class);
         Student mario = Mockito.mock(Student.class);

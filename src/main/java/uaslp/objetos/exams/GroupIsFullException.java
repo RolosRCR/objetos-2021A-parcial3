@@ -1,4 +1,4 @@
 package uaslp.objetos.exams;
 
-public class GroupIsFullException extends Exception {
+public class GroupIsFullException extends RuntimeException {
 }
